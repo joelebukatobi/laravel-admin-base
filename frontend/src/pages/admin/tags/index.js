@@ -51,7 +51,7 @@ export default function index({ tags, token }) {
                     <td className="capitalize">{tag.name}</td>
                     <td>{moment(tag.created_at).format('L')}</td>
                     <td>
-                      <div className="flex items-center gap-x-[.8rem]">
+                      <div className="flex items-center gap-x-[.8rem] pl-[1.6rem]">
                         <Link href={`/admin/tags/${tag.slug}/`}>
                           <svg className="hover:stroke-green-600">
                             <use href={`/images/sprite.svg#icon-post`} />
@@ -78,7 +78,6 @@ export default function index({ tags, token }) {
 
 export async function getServerSideProps({ req }) {
   const { token } = parseCookies(req);
-  console.log(token);
   const res = await fetch(`${API_URL}/api/tags`, {
     method: 'GET',
     headers: {

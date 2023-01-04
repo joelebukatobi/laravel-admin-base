@@ -19,9 +19,6 @@ export default function index({ category, token }) {
   // Store values gotten from form
   const [name, setName] = useState(category.name);
   const [description, setDescription] = useState(category.description);
-
-  console.log(category.slug);
-  // handleSubmit
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await fetch(`${API_URL}/api/categories/${category.slug}`, {
@@ -83,7 +80,6 @@ export default function index({ category, token }) {
             onChange={(e) => setName(e.target.value)}
             required
             className={'mb-[2.4rem]'}
-            classInput={'mt-[.8rem]'}
           />
           <Textarea
             label={'Description'}

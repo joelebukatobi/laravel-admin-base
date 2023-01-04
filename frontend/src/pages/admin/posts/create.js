@@ -125,7 +125,7 @@ export default function Post({ tags, categories, users, token }) {
               onChange={(e) => setTitle(e.target.value)}
               required={'required'}
               className={'mb-[2.4rem]'}
-              classInput={'mt-[.8rem] capitalize'}
+              classInput={'capitalize'}
             />
             <Input
               label={'Image'}
@@ -137,7 +137,7 @@ export default function Post({ tags, categories, users, token }) {
               after={content || 'Upload an image'}
               className={'mb-[2.4rem] '}
               classInput={
-                'mt-[.8rem] relative after:content-[attr(after)] after:bg-white after:h-full after:w-full after:absolute after:top-0  after:left-[1.6rem] after:z-10 after:flex after:items-center after:font-light after:text-[#b9bec7]'
+                'relative after:content-[attr(after)] after:bg-white after:h-full after:w-full after:absolute after:top-0  after:left-[1.6rem] after:z-10 after:flex after:items-center after:font-light after:text-[#b9bec7]'
               }
             />
           </div>
@@ -198,7 +198,6 @@ export async function getServerSideProps({ req }) {
     }),
   ]);
   const data = await Promise.all(res.map((res) => res.json()));
-  // console.log(data[0]);
   return {
     props: {
       token,

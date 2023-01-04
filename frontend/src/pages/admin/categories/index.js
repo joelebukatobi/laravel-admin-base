@@ -54,7 +54,7 @@ export default function index({ categories, token }) {
                     <td className="first-letter:capitalize">{category.description.substring(0, 50)}...</td>
                     <td>{moment(category.created_at).format('L')}</td>
                     <td>
-                      <div className="flex items-center gap-x-[.8rem]">
+                      <div className="flex items-center gap-x-[.8rem] pl-[1.6rem]">
                         <Link href={`/admin/categories/${category.slug}/`}>
                           <svg className="hover:stroke-green-600">
                             <use href={`/images/sprite.svg#icon-post`} />

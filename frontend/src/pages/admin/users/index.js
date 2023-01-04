@@ -9,7 +9,6 @@ import Modal from '@/admin//components/Modal';
 import { API_URL } from '@/config/index';
 import { parseCookies } from '@/helpers//index';
 // External Libraries
-import moment from 'moment/moment';
 
 export default function index({ token, users }) {
   // State
@@ -40,7 +39,7 @@ export default function index({ token, users }) {
               <tr>
                 <th>S/N</th>
                 <th>Name</th>
-                <th>Email</th>
+                <th className="w-2/6">Email</th>
                 <th>Username</th>
                 <th>Role</th>
                 <th className="@apply rounded-tr-[.8rem] w-[10%] pl-[0]">Edit</th>
@@ -56,7 +55,7 @@ export default function index({ token, users }) {
                     <td className="lowercase">{user.username}</td>
                     <td>{user.role.name}</td>
                     <td>
-                      <div className="flex items-center gap-x-[.8rem]">
+                      <div className="flex items-center gap-x-[.8rem] pl-[1.6rem]">
                         <Link href={`/admin/users/${user.username}/`}>
                           <svg className="hover:stroke-green-600">
                             <use href={`/images/sprite.svg#icon-post`} />

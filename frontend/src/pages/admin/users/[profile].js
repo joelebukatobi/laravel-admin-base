@@ -97,7 +97,7 @@ export default function Profile({ token, user, username }) {
                 <h5 className="text-black/70 hover:text-black">Dashboard &nbsp;</h5>
               </Link>
               <h5>&gt; &nbsp;</h5>
-              {loading === 'false' && data.role.id === '1' ? (
+              {loading === 'false' && user.role.id === '1' ? (
                 <>
                   <Link href={`/admin/users`}>
                     <h5 className=" text-black/70 hover:text-black">Users &nbsp;</h5>
@@ -123,7 +123,6 @@ export default function Profile({ token, user, username }) {
                 onChange={(e) => setFirstName(e.target.value)}
                 required
                 className={'mb-[2.4rem]'}
-                classInput={'mt-[.8rem]'}
               />
               <Input
                 name={'last_name'}
@@ -134,7 +133,6 @@ export default function Profile({ token, user, username }) {
                 onChange={(e) => setLastName(e.target.value)}
                 required
                 className={'mb-[2.4rem]'}
-                classInput={'mt-[.8rem]'}
               />
             </div>
             <div className="flex items-start gap-x-[3.2rem] mb-[2.4rem];">
@@ -147,7 +145,6 @@ export default function Profile({ token, user, username }) {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 className={'mb-[2.4rem]'}
-                classInput={'mt-[.8rem]'}
               />
             </div>
             <div className="flex items-start gap-x-[3.2rem] mb-[2.4rem];">
@@ -160,11 +157,8 @@ export default function Profile({ token, user, username }) {
                 required
                 after={content || 'Upload an image'}
                 className={'mb-[2.4rem] '}
-                classInput={
-                  'mt-[.8rem] relative after:content-[attr(after)] after:bg-white after:h-full after:w-full after:absolute after:top-0  after:left-[1.6rem] after:z-5 after:flex after:items-center after:font-light after:text-black'
-                }
               />
-              {loading === false && data.role.id === '1' ? (
+              {loading === false && user.role.id === '1' ? (
                 <Select placeHolder="Role" label="Role" options={options} onChange={(value) => setRole(value.value)} />
               ) : (
                 ''
@@ -181,7 +175,6 @@ export default function Profile({ token, user, username }) {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 className={'mb-[2.4rem]'}
-                classInput={'mt-[.8rem]'}
               />
               <Input
                 name={'password_confirmation'}
@@ -192,7 +185,6 @@ export default function Profile({ token, user, username }) {
                 onChange={(e) => setPasswordConfirmation(e.target.value)}
                 required
                 className={'mb-[2.4rem]'}
-                classInput={'mt-[.8rem]'}
               />
             </div>
           </form>

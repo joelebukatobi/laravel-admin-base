@@ -4,24 +4,13 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 // Components
 import Card from '@/admin//components//Card';
-import Modal from '@/admin//components/Modal';
 import Layout from '@/admin//layouts/Layout';
 // Config & Helpers
 import { API_URL } from '@/config/index';
-import { parseCookies } from '@/helpers//index';
 // External Libraries
 import moment from 'moment/moment';
 
 export default function index({ posts, categories, tags }) {
-  // State
-  const [slug, setSlug] = useState('');
-  const [open, setOpen] = useState(false);
-
-  // Toggle Modal
-  const toggle = () => {
-    setOpen(true);
-  };
-
   // Set ID
   let id = 1;
   return (

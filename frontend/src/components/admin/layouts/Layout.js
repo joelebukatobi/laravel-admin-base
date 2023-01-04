@@ -1,5 +1,5 @@
 // React
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 // Next JS
 import { useRouter } from 'next/router';
 // Components
@@ -15,23 +15,31 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '@/features//user/userActions';
 
 export default function Layout({ children }) {
-  const { data } = useSelector((state) => state.user);
+  const [user, setUser] = useState();
+  //
   const navigate = useRouter().push;
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getUser());
+    dispatch(getUser())
+      .unwrap()
+      .then((data) => {
+        setUser(data);
+        if (data === null) {
+          navigate('/admin/login');
+        }
+      });
   }, []);
 
   return (
     <div id="admin">
-      {data ? (
+      {user ? (
         <>
-          <Navbar />
-          <Sidebar />
+          <Navbar user={user} />
+          <Sidebar user={user} />
           <Body>{children}</Body>
         </>
       ) : (
-        <Login />
+        <Loading />
       )}
     </div>
   );

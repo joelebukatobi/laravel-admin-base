@@ -1,28 +1,25 @@
 // React
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 // Next JS
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 // Redux Toolkit
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { userLogout } from '@/features///user/userActions';
 
-export default function Sidebar() {
+export default function Sidebar({ user }) {
   // State
   const [open, setOpen] = useState(false);
-  const dispatch = useDispatch();
+  //
+  const pathname = useRouter().pathname;
+  const navigate = useRouter().push;
   // Logout Dispatch
+  const dispatch = useDispatch();
   const logout = () => {
     dispatch(userLogout())
       .unwrap()
-      .then(() => navigate('/admin'));
+      .then(() => navigate('/admin/login'));
   };
-  // Initialize Data
-  const { data, loading } = useSelector((state) => state.user);
-  console.log(data);
-  // Route
-  const pathname = useRouter().pathname;
-  const navigate = useRouter().push;
 
   // Toggle Menu
   const toggle = () => {
@@ -222,7 +219,7 @@ export default function Sidebar() {
               />
             </svg>
           </li>
-          {loading === false && data.role.id === 1 ? (
+          {user && user.role.id === 1 ? (
             <li
               className={`${
                 pathname === '/users' || pathname.includes('users')
@@ -257,7 +254,6 @@ export default function Sidebar() {
                     />
                   </svg>
                 </div>
-                {/* <Link href={`/admin/user`}>Profile</Link> */}
                 Users
               </div>
               <svg
@@ -285,7 +281,7 @@ export default function Sidebar() {
                   <Link href="/admin/users">All Users</Link>
                 </li>
                 <li>
-                  <Link href={`/admin/users/${data.username}`}>My Profile</Link>
+                  <Link href={`/admin/users/${user.username}`}>My Profile</Link>
                 </li>
               </ul>
             </li>
@@ -321,7 +317,7 @@ export default function Sidebar() {
                     />
                   </svg>
                 </div>
-                <Link href={`/admin/users/${data.username}`}>Profile</Link>
+                <Link href={`/admin/users/${user.username}`}>Profile</Link>
               </div>
               <svg
                 width="16"

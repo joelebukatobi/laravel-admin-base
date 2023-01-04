@@ -56,7 +56,7 @@ export default function index({ posts, token }) {
                     <td>{moment(post.created_at).format('L')}</td>
                     <td>{post.user.first_name + ' ' + post.user.last_name}</td>
                     <td>
-                      <div className="flex items-center gap-x-[.8rem]">
+                      <div className="flex items-center gap-x-[.8rem] pl-[1.6rem]">
                         <Link href={`/admin/posts/${post.slug}/`}>
                           <svg className="hover:stroke-green-600">
                             <use href={`/images/sprite.svg#icon-post`} />

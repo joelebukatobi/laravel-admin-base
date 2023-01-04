@@ -27,11 +27,6 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-        Gate::define('create-delete-users', function (User $user) { 
-            if($user->role_id===1) { 
-                return true;
-            }
-        });
         //
     }
 }

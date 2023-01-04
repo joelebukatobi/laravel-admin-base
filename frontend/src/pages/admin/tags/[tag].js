@@ -79,7 +79,6 @@ export default function index({ tag, token }) {
             onChange={(e) => setName(e.target.value)}
             required
             className={'mb-[2.4rem]'}
-            classInput={'mt-[.8rem]'}
           />
           {/* <Textarea
             label={'Description'}
@@ -106,7 +105,6 @@ export async function getServerSideProps({ req, query: { tag } }) {
     },
   });
   const data = await res.json();
-  console.log(data);
   return {
     props: {
       token,

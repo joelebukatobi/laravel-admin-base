@@ -112,7 +112,6 @@ export default function Register({ token }) {
                 onChange={(e) => setFirstName(e.target.value)}
                 required
                 className={'mb-[2.4rem]'}
-                classInput={'mt-[.8rem]'}
               />
               <Input
                 name={'last_name'}
@@ -123,7 +122,6 @@ export default function Register({ token }) {
                 onChange={(e) => setLastName(e.target.value)}
                 required
                 className={'mb-[2.4rem]'}
-                classInput={'mt-[.8rem]'}
               />
             </div>
             <div className="flex items-start gap-x-[3.2rem] mb-[2.4rem];">
@@ -136,7 +134,6 @@ export default function Register({ token }) {
                 onChange={(e) => setUserName(e.target.value)}
                 required
                 className={'mb-[2.4rem]'}
-                classInput={'mt-[.8rem]'}
               />{' '}
               <Input
                 name={'new_image'}
@@ -162,7 +159,6 @@ export default function Register({ token }) {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 className={'mb-[2.4rem]'}
-                classInput={'mt-[.8rem]'}
               />
               <Select placeHolder="Role" label="Role" options={options} onChange={(value) => setRole(value.value)} />
             </div>
@@ -176,7 +172,6 @@ export default function Register({ token }) {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 className={'mb-[2.4rem]'}
-                classInput={'mt-[.8rem]'}
               />
               <Input
                 name={'password_confirmation'}
@@ -187,7 +182,6 @@ export default function Register({ token }) {
                 onChange={(e) => setPasswordConfirmation(e.target.value)}
                 required
                 className={'mb-[2.4rem]'}
-                classInput={'mt-[.8rem]'}
               />
             </div>
           </form>
