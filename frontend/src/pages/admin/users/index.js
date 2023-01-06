@@ -2,6 +2,7 @@
 import { useState } from 'react';
 // Next JS
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 // Components
 import Layout from '@/admin//layouts/Layout';
 import Modal from '@/admin//components/Modal';
@@ -9,17 +10,34 @@ import Modal from '@/admin//components/Modal';
 import { API_URL } from '@/config/index';
 import { parseCookies } from '@/helpers//index';
 // External Libraries
+import { useDispatch } from 'react-redux';
+import { getUser } from '@/features//user/userActions';
 
 export default function index({ token, users }) {
+  // Route
+  const navigate = useRouter().push;
   // State
   const [slug, setSlug] = useState('');
   const [open, setOpen] = useState(false);
+  const [user, setUser] = useState('');
 
   // Toggle Modal
   const toggle = () => {
     setOpen(true);
   };
 
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUser())
+      .unwrap()
+      .then((data) => {
+        setUser(data);
+      });
+  }, []);
+
+  if (user && user.role.id !== 1) {
+    navigate('/admin');
+  }
   // Set ID
   let id = 1;
   return (
